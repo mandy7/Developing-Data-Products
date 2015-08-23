@@ -1,0 +1,7 @@
+Title: Safety %
+Author: Mandhir Dua.
+AuthorUrl: http://www.rstudio.com/
+License: GPL-3
+DisplayMode: Showcase
+Tags: Developing data products
+Type: Shiny
