@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Developing Data Products</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Products">
+  <meta name="author" content="Mandhir Dua">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Products</h1>
+    <h2>Getting Women Safety % in Delhi</h2>
+    <p>Mandhir Dua<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Background</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In the recent years, there has been many woment safety incidents happenned in the city of Delhi, India. </p>
+
+<p>In order to create awareness among citizens and local enforcement bodies, an organization name &quot;Safecity&quot; track the incidents.</p>
+
+<p>Post tracking, we at Safecity, analyze the incidents, their types, severity, timing, location and other factors</p>
+
+<p>Basis these parameters we are trying to predict the safty % of a female provided any given location, time and mode of commutation</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Web Application Description</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This is a very basic application where user will input his/her location (out of different districts of Delhi) using a dropdown. </p>
+
+<p>Then visitng hours, using a slider. </p>
+
+<p>Finally, user has to enter mode of commutation using radio buttons. As we have tagged incidents to the mode of transport used, so it can be benificial to enter the same.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Logic and data behind this Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The data comprises of fields - &quot;Location&quot; &quot;Time of incident&quot; &quot;description&quot;  &quot;Mode of transport&quot;</p>
+
+<p>Due to sensitive nature of data, I wont be sharing the same </p>
+
+<p>Below is fragment of code to evaluate safety score. Post safety score it is scaled and normalized to get safety %</p>
+
+<pre><code class="r">location &lt;- c(&quot;posh&quot; =10,&quot;normal&quot;=6,&quot;backward&quot;=3)
+time &lt;- c(&quot;0-6&quot;=1,&quot;6-9&quot;=2,&quot;10-5&quot;=4,&quot;6-9&quot;=4, &quot;9-12&quot;=2)
+transport &lt;- c(&quot;metro&quot;=3,&quot;bus&quot;=2,&quot;car&quot;=4,&quot;cab&quot;=3,&quot;auto-rickshaw&quot;=2,&quot;foot&quot;=2)
+
+part1 &lt;- (as.numeric(location[2])*as.numeric(time[2]))
+part2 &lt;- (as.numeric(time[2])*as.numeric(transport[3]))/2
+safety &lt;- part1 + part2
+safety
+</code></pre>
+
+<pre><code>## [1] 16
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Road Ahead</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Besides predicting the safety %, another utility of this app can be to establish a corelation between crime and other social facotrs. </p>
+
+<p>For instance, plot to relate crime and unemployment. </p>
+
+<p>Then maybe a line chart depicting hourly safety trends. </p>
+
+<p>Due to limited data availability, I was not able to plot any graphs as of now. But I am hoping to add such visualization, once we have more relevant data</p>
+
+<p>Thank You</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Background'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Web Application Description'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Logic and data behind this Application'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Road Ahead'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

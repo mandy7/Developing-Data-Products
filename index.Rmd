@@ -1,0 +1,71 @@
+---
+title       : Developing Data Products
+subtitle    : Getting Women Safety % in Delhi
+author      : Mandhir Dua
+job         : 
+framework   : io2012    # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Background
+
+In the recent years, there has been many woment safety incidents happenned in the city of Delhi, India. 
+
+In order to create awareness among citizens and local enforcement bodies, an organization name "Safecity" track the incidents.
+
+Post tracking, we at Safecity, analyze the incidents, their types, severity, timing, location and other factors
+
+Basis these parameters we are trying to predict the safty % of a female provided any given location, time and mode of commutation
+
+
+--- .class #id 
+
+## Web Application Description
+
+This is a very basic application where user will input his/her location (out of different districts of Delhi) using a dropdown. 
+
+Then visitng hours, using a slider. 
+
+Finally, user has to enter mode of commutation using radio buttons. As we have tagged incidents to the mode of transport used, so it can be benificial to enter the same.
+
+--- .class #id
+
+## Logic and data behind this Application
+
+The data comprises of fields - "Location" "Time of incident" "description"  "Mode of transport"
+
+Due to sensitive nature of data, I wont be sharing the same 
+
+Below is fragment of code to evaluate safety score. Post safety score it is scaled and normalized to get safety %
+
+```{r}
+location <- c("posh" =10,"normal"=6,"backward"=3)
+time <- c("0-6"=1,"6-9"=2,"10-5"=4,"6-9"=4, "9-12"=2)
+transport <- c("metro"=3,"bus"=2,"car"=4,"cab"=3,"auto-rickshaw"=2,"foot"=2)
+
+part1 <- (as.numeric(location[2])*as.numeric(time[2]))
+part2 <- (as.numeric(time[2])*as.numeric(transport[3]))/2
+safety <- part1 + part2
+safety
+
+```
+
+
+--- .class #id
+
+## Road Ahead
+
+Besides predicting the safety %, another utility of this app can be to establish a corelation between crime and other social facotrs. 
+
+For instance, plot to relate crime and unemployment. 
+
+Then maybe a line chart depicting hourly safety trends. 
+
+Due to limited data availability, I was not able to plot any graphs as of now. But I am hoping to add such visualization, once we have more relevant data
+
+
+Thank You
